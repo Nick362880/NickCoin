@@ -4,17 +4,24 @@
 		<title>NickCoin Alpha - Mine</title>
 		<meta charset="utf-8">
 		<style>
-			body {
-				font-family: Arial;
-				font-size: 16px;
-				color: #333;
-				margin: 16px auto;
-				padding: 16px;
-				display: block;
-				max-width: 720px;
-			}
 			#embed {
 				display: inline;
+			}
+			a {
+				text-decoration: none;
+			}
+			body {
+				margin: 0;
+				background-color: #F8CB9C
+			}
+			#content {
+				font-family: Arial, sans-serif;
+				font-size: 16px;
+				color: #383838;
+				margin: 16px auto 16px auto;
+				padding: 24px;
+				max-width: 720px;
+				background-color: #FFFFFF;
 			}
 			#pw {
 				margin-top: 4px;
@@ -76,11 +83,13 @@
 		</script>
 	</head>
 	<body>
-		<h1>NickCoin Alpha vA.1.0</h1>
-		<pre><a href="index.html">about</a> - <a href="faqs.html">faqs</a> - <a href="mine.html">mine</a> - <a href="trade.html">trade</a></pre>
-		<hr />
-		<h2>Mine</h2>
-		<div id="cont"><p>Login/User ID: <input type="number" min="100000" max="999999" placeholder="6-digit length" id="un"><br />Login/User Password: <input type="text" placeholder="> 0-digit length"id="pw"><br /><input type="button" value="submit" id="submit"></p></div>
-		<!-- <p>NickCoin ID: <input type="number" min="0" max="32767"></p> -->
+		<div id="content">
+			<h1>NickCoin Alpha vA.1.0</h1>
+			<pre><a href="index.html">about</a> - <a href="faqs.html">faqs</a> - <a href="mine.html">mine</a> - <a href="trade.html">trade</a></pre>
+			<hr />
+			<h2>Mine</h2>
+			<div id="cont"><p>Login/User ID: <input type="number" min="100000" max="999999" placeholder="6-digit length" id="un"><br />Login/User Password: <input type="text" placeholder="> 0-digit length"id="pw"><br /><input type="button" value="submit" id="submit"></p></div>
+			<!-- <p>NickCoin ID: <input type="number" min="0" max="32767"></p> -->
+		</div>
 	</body>
 </html>
