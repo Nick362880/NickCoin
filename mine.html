@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NickCoin Alpha - Mine</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				font-family: Arial;
+				font-size: 16px;
+				color: #333;
+				margin: 16px auto;
+				padding: 16px;
+				display: block;
+				max-width: 720px;
+			}
+			#embed {
+				display: inline;
+			}
+			#pw {
+				margin-top: 4px;
+			}
+			input[type=text] {
+				width: 200px;
+			}
+			input[type=number] {
+				width: 200px;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var un = document.getElementById("un");
+				var pw = document.getElementById("pw");
+				var b = document.getElementById("submit");
+				var d = document.getElementById("cont");
+				b.onclick = function() {
+					if (un.value.toString().length == 6 && pw.value.toString().length >= 1) {
+						var ws = new WebSocket("ws://127.0.0.1:5678/");
+						ws.onopen = function(event) {
+							ws.send(un.value + " " + pw.value);
+						};
+						ws.onmessage = function(event) {
+							if (Number(event.data)) {
+								d.innerHTML = "<p>" + un.value + ": logged in.</p>";
+							} else {
+								d.innerHTML = "<p>Account does not exist. Creating new account.</p>";
+								ws.send("create " + un.value + " " + pw.value);
+								d.innerHTML = d.innerHTML + "<p>" + un.value + ": logged in.</p>";
+							}
+							ws.close(1000);
+							
+							d.innerHTML = d.innerHTML + "<p>NickCoin ID: <input type=\"number\" min=\"0\" max=\"37267\" placeholder=\"0-32767\" id=\"ncid\"><br /><input type=\"button\" value=\"submit\" id=\"submit\"></p>";
+							var ncid = document.getElementById("ncid");
+							var ncs = document.getElementById("submit");
+							ncs.onclick = function() {
+								if (ncid.value >= 0 && ncid.value <= 32767) {
+									coinquery(ncid.value);
+								}
+							}
+						};
+					}
+				}
+			}
+			function coinquery(id) {
+				var ws = new WebSocket("ws://127.0.0.1:5678/");
+				ws.onopen = function(event) {
+					ws.send("query " + id);
+				};
+				ws.onmessage = function(event) {
+					if (Number(event.data)) {
+						// Mined coin (s)
+					} else {
+						// Not mined
+					}
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<h1>NickCoin Alpha vA.1.0</h1>
+		<pre><a href="index.html">about</a> - <a href="faqs.html">faqs</a> - <a href="mine.html">mine</a> - <a href="trade.html">trade</a></pre>
+		<hr />
+		<h2>Mine</h2>
+		<div id="cont"><p>Login/User ID: <input type="number" min="100000" max="999999" placeholder="6-digit length" id="un"><br />Login/User Password: <input type="text" placeholder="> 0-digit length"id="pw"><br /><input type="button" value="submit" id="submit"></p></div>
+		<!-- <p>NickCoin ID: <input type="number" min="0" max="32767"></p> -->
+	</body>
+</html>
