@@ -10,9 +10,40 @@
 			a {
 				text-decoration: none;
 			}
+			#mainh1 {
+				margin-top: 0px;
+				margin-bottom: 20px;
+				/* background-color: #CCC; */
+				padding-bottom: 4px;
+				border-radius: 6px;
+			}
+			html {
+				height: 100%;
+			}
 			body {
 				margin: 0;
-				background-color: #F8CB9C
+				background: repeating-linear-gradient(-45deg, #111 0px, #111 40px, #000 40px, #000 80px);
+			}
+			input[type=button] {
+				margin-top: 12px;
+				width: 200px;
+				height: 30px;
+				border: 0px;
+				border-radius: 6px;
+				font-size: 16px;
+				font-family: Arial, sans-serif;
+				background: linear-gradient(180deg, #FFF, #EEE);
+			}
+			input[type=button]:hover {
+				background: #DDD;
+			}
+			input[type=textfield], input[type=password] {
+				width: 200px;
+				height: 22px;
+				padding-left: 4px;
+				font-size: 16px;
+				border: 0px;
+				border-radius: 6px;
 			}
 			#content {
 				font-family: Arial, sans-serif;
@@ -20,76 +51,41 @@
 				color: #383838;
 				margin: 16px auto 16px auto;
 				padding: 24px;
-				max-width: 720px;
-				background-color: #FFFFFF;
+				max-width: 360px;
+				background: rgba(255, 255, 255, 0.8);
+				text-align: center;
+				border-radius: 16px;
 			}
-			#pw {
-				margin-top: 4px;
+			.inputwrapper {
+				border-radius: 4px;
+				padding-top: 4px;
+				padding-bottom: 4px;
 			}
-			input[type=text] {
-				width: 200px;
-			}
-			input[type=number] {
-				width: 200px;
+			#psswdinputwrapper {
+				margin-top: 6px;
 			}
 		</style>
 		<script>
-			window.onload = function() {
-				var un = document.getElementById("un");
-				var pw = document.getElementById("pw");
-				var b = document.getElementById("submit");
-				var d = document.getElementById("cont");
-				b.onclick = function() {
-					if (un.value.toString().length == 6 && pw.value.toString().length >= 1) {
-						var ws = new WebSocket("ws://127.0.0.1:5678/");
-						ws.onopen = function(event) {
-							ws.send(un.value + " " + pw.value);
-						};
-						ws.onmessage = function(event) {
-							if (Number(event.data)) {
-								d.innerHTML = "<p>" + un.value + ": logged in.</p>";
-							} else {
-								d.innerHTML = "<p>Account does not exist. Creating new account.</p>";
-								ws.send("create " + un.value + " " + pw.value);
-								d.innerHTML = d.innerHTML + "<p>" + un.value + ": logged in.</p>";
-							}
-							ws.close(1000);
-							
-							d.innerHTML = d.innerHTML + "<p>NickCoin ID: <input type=\"number\" min=\"0\" max=\"37267\" placeholder=\"0-32767\" id=\"ncid\"><br /><input type=\"button\" value=\"submit\" id=\"submit\"></p>";
-							var ncid = document.getElementById("ncid");
-							var ncs = document.getElementById("submit");
-							ncs.onclick = function() {
-								if (ncid.value >= 0 && ncid.value <= 32767) {
-									coinquery(ncid.value);
-								}
-							}
-						};
-					}
-				}
-			}
-			function coinquery(id) {
-				var ws = new WebSocket("ws://127.0.0.1:5678/");
-				ws.onopen = function(event) {
-					ws.send("query " + id);
-				};
-				ws.onmessage = function(event) {
-					if (Number(event.data)) {
-						// Mined coin (s)
-					} else {
-						// Not mined
-					}
-				};
-			}
+			
 		</script>
 	</head>
 	<body>
 		<div id="content">
-			<h1>NickCoin Alpha vA.1.0</h1>
-			<pre><a href="index.html">about</a> - <a href="faqs.html">faqs</a> - <a href="mine.html">mine</a> - <a href="trade.html">trade</a></pre>
-			<hr />
-			<h2>Mine</h2>
-			<div id="cont"><p>Login/User ID: <input type="number" min="100000" max="999999" placeholder="6-digit length" id="un"><br />Login/User Password: <input type="text" placeholder="> 0-digit length"id="pw"><br /><input type="button" value="submit" id="submit"></p></div>
-			<!-- <p>NickCoin ID: <input type="number" min="0" max="32767"></p> -->
+			<div id="main">
+				<!-- <div id="back">
+					<pre id="backhtml">Back</pre>
+				</div> -->
+				<h1 id="mainh1">Login</h1>
+				<div class="inputwrapper" id="unameinputwrapper">
+					<pre class="embed">Username:</pre>
+					<input type="textfield" id="uname">
+				</div>
+				<div class="inputwrapper" id="psswdinputwrapper">
+					<pre class="embed">Password:</pre>
+					<input type="password" id="psswd">
+				</div>
+				<input type="button" value="Submit">
+			</div>
 		</div>
 	</body>
 </html>
