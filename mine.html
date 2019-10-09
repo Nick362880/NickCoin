@@ -9,13 +9,30 @@
 			}
 			a {
 				text-decoration: none;
+				color: #BBF;
 			}
 			#mainh1 {
 				margin-top: 0px;
-				margin-bottom: 20px;
+				margin-bottom: 12px;
 				/* background-color: #CCC; */
 				padding-bottom: 4px;
 				border-radius: 6px;
+			}
+			#hadd {
+				position: absolute;
+				bottom: 4px;
+				left: 8px;
+				font-size: 16px;
+				color: #FFF;
+				padding: 4px;
+			}
+			#hhelp {
+				background-color: #335;
+				border-radius: 8px;
+				padding: 4px;
+			}
+			#hhelp:hover {
+				cursor: pointer;
 			}
 			html {
 				height: 100%;
@@ -40,8 +57,8 @@
 			input[type=textfield], input[type=password] {
 				width: 200px;
 				height: 22px;
-				padding-left: 4px;
-				font-size: 16px;
+				padding-left: 8px;
+				font-size: 14px;
 				border: 0px;
 				border-radius: 6px;
 			}
@@ -49,7 +66,7 @@
 				font-family: Arial, sans-serif;
 				font-size: 16px;
 				color: #383838;
-				margin: 16px auto 16px auto;
+				margin: 32px auto 16px auto;
 				padding: 24px;
 				max-width: 360px;
 				background: rgba(255, 255, 255, 0.8);
@@ -65,17 +82,18 @@
 				margin-top: 6px;
 			}
 		</style>
-		<script>
-			
-		</script>
+		<script src="minecore.js"></script>
 	</head>
 	<body>
 		<div id="content">
+			<span id="hadd"><pre class="embed" id="hhome"><a href="index.html">home</a></pre> - <pre class="embed" id="hhelp">help</pre></span>
 			<div id="main">
 				<!-- <div id="back">
 					<pre id="backhtml">Back</pre>
 				</div> -->
-				<h1 id="mainh1">Login</h1>
+				<div id="heading">
+					<h1 id="mainh1">Log In / Sign Up</h1>
+				</div>
 				<div class="inputwrapper" id="unameinputwrapper">
 					<pre class="embed">Username:</pre>
 					<input type="textfield" id="uname">
