@@ -4,35 +4,9 @@
 		<title>NickCoin Alpha - Mine</title>
 		<meta charset="utf-8">
 		<style>
-			.embed {
-				display: inline;
-			}
 			a {
 				text-decoration: none;
 				color: #BBF;
-			}
-			#mainh1 {
-				margin-top: 0px;
-				margin-bottom: 12px;
-				/* background-color: #CCC; */
-				padding-bottom: 4px;
-				border-radius: 6px;
-			}
-			#hadd {
-				position: absolute;
-				bottom: 4px;
-				left: 8px;
-				font-size: 16px;
-				color: #FFF;
-				padding: 4px;
-			}
-			#hhelp {
-				background-color: #335;
-				border-radius: 8px;
-				padding: 4px;
-			}
-			#hhelp:hover {
-				cursor: pointer;
 			}
 			html {
 				height: 100%;
@@ -62,6 +36,14 @@
 				border: 0px;
 				border-radius: 6px;
 			}
+			.embed {
+				display: inline;
+			}
+			.inputwrapper {
+				border-radius: 4px;
+				padding-top: 4px;
+				padding-bottom: 4px;
+			}
 			#content {
 				font-family: Arial, sans-serif;
 				font-size: 16px;
@@ -73,13 +55,31 @@
 				text-align: center;
 				border-radius: 16px;
 			}
-			.inputwrapper {
-				border-radius: 4px;
-				padding-top: 4px;
-				padding-bottom: 4px;
-			}
 			#psswdinputwrapper {
 				margin-top: 6px;
+			}
+			#mainh1 {
+				margin-top: 0px;
+				margin-bottom: 12px;
+				/* background-color: #CCC; */
+				padding-bottom: 4px;
+				border-radius: 6px;
+			}
+			#hadd {
+				position: absolute;
+				bottom: 4px;
+				left: 8px;
+				font-size: 16px;
+				color: #FFF;
+				padding: 4px;
+			}
+			#hhelp {
+				background-color: #335;
+				border-radius: 8px;
+				padding: 4px;
+			}
+			#hhelp:hover {
+				cursor: pointer;
 			}
 		</style>
 		<script src="minecore.js"></script>
