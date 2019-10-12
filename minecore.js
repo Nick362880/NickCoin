@@ -24,14 +24,35 @@ window.onload = function() {
 			}
 			ws.onmessage = function(e) {
 				ws.close(1000);
+				// Login with username and password
 				if (e.data == "true") {
-					alert("signing in");
+					login(false, null, null);
 				} else {
-					confirm("account not in existence. Create new account?")
+					// Confirm login if account doesn't exist
+					if(confirm("Account does not exist. Create new account?")) {
+						login(true, u, p);
+					}
 				}
 			}
 		} else {
 			alert("Invalid username or password");
 		}
+	}
+}
+
+function login(isnewuser, u, p) {
+	alert("Logging in.");
+	var ws = new WebSocket("ws://localhost:3280");
+	ws.onopen = function() {
+		if (isnewuser) {
+			ws.send("login " + u + " " + p);
+		}
+		else {
+			ws.send("login");
+		}
+	}
+	ws.onmessage = function(e) {
+		ws.close(1000);
+		alert(e);
 	}
 }
